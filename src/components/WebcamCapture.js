@@ -22,7 +22,8 @@ function WebcamCapture() {
 
     //dispatch or shoot the action of setting camera image
     //use payload of imagesrc
-    dispatch(selectCameraImageaImage(imageSrc));
+    dispatch(setCameraImage(imageSrc));
+    console.log(imageSrc);
   }, [webcamRef]);
   return (
     <div className="webcamCapture">
@@ -40,8 +41,6 @@ function WebcamCapture() {
         onClick={capture}
         fontSize="large"
       />
-
-      <img src={image} alt="" />
     </div>
   );
 }

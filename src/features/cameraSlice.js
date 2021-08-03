@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  camerImage: null,
+  cameraImage: null,
 };
 
 export const cameraSlice = createSlice({
@@ -10,10 +10,10 @@ export const cameraSlice = createSlice({
 
   reducers: {
     setCameraImage: (state, action) => {
-      state.camerImage = action.payload;
+      state.cameraImage = action.payload;
     },
     resetCameraImage: (state) => {
-      state.camerImage = null;
+      state.cameraImage = null;
     },
   },
 });
@@ -22,6 +22,6 @@ export const cameraSlice = createSlice({
 export const { setCameraImage, resetCameraImage } = cameraSlice.actions;
 
 //pull information from the storage
-export const selectCameraImage = (state) => state.camera.value;
+export const selectCameraImage = (state) => state.camera.cameraImage;
 
 export default cameraSlice.reducer;
