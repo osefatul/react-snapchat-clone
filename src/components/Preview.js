@@ -15,6 +15,7 @@ import {
   Timer,
   Send,
 } from "@material-ui/icons";
+import { v4 as uuid } from "uuid";
 
 function Preview() {
   //pull the cameraImage from the redux store
@@ -33,7 +34,12 @@ function Preview() {
     dispatch(resetCameraImage());
   };
 
-  const sendPost = () => {};
+  const sendPost = () => {
+    const id = uuid();
+    const uploadTask = storage
+      .ref(`post/${id}`)
+      .putString(cameraImage, "data_url");
+  };
 
   return (
     <div className="preview">
