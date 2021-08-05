@@ -3,7 +3,7 @@ import React, { useCallback, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Webcam from "react-webcam";
-import { selectCameraImage, setCameraImage } from "../features/cameraSlice";
+import { setCameraImage } from "../features/cameraSlice";
 import "./webcamCapture.css";
 
 const videoConstraints = {

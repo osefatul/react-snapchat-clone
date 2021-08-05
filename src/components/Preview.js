@@ -33,6 +33,8 @@ function Preview() {
     dispatch(resetCameraImage());
   };
 
+  const sendPost = () => {};
+
   return (
     <div className="preview">
       <Close className="preview_close" onClick={closePreview} />
@@ -47,7 +49,7 @@ function Preview() {
       </div>
       <img src={cameraImage} alt="" />
 
-      <div className="preview_footer">
+      <div onClick={sendPost} className="preview_footer">
         <h2>Send Now</h2>
         <Send fontSize="small" className="preview_sendIcon" />
       </div>
