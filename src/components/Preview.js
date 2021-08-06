@@ -15,7 +15,9 @@ import {
   Timer,
   Send,
 } from "@material-ui/icons";
-import { v4 as uuid } from "uuid";
+import { v4 as uuid } from "uuid"; // for unique id for image
+import { storage, db } from "../firebase";
+import firebase from "firebase";
 
 function Preview() {
   //pull the cameraImage from the redux store
@@ -35,10 +37,36 @@ function Preview() {
   };
 
   const sendPost = () => {
-    const id = uuid();
+    const id = uuid(); //generate a random string
+
+    //upload the image to the firebase storage
     const uploadTask = storage
       .ref(`post/${id}`)
       .putString(cameraImage, "data_url");
+
+    //when the upload task is completed then do the below..
+    uploadTask.on(
+      "state_changed", //when the state changes means it is completed
+      null, //progress function is null as we dont care about it for now
+      (error) => console.log(error), //any error log it
+      () => {
+        //COMPLETE FUNCTION
+        storage
+          .ref("post")
+          .child(id)
+          .getDownloadURL()
+          .then((url) => {
+            db.collection("post").add({
+              imageUrl: url, //downloaded url
+              username: "Sefat",
+              read: false, //once the post is read this will get to true,
+              //profilePic,
+              timestamp: firebase.firestore.FieldValue.serverTimestamp(), // will give you a consistent firebase regardless wherever in the world you are.
+            });
+            history.replace("/chats");
+          });
+      }
+    );
   };
 
   return (
