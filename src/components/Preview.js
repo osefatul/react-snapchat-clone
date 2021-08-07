@@ -50,7 +50,7 @@ function Preview() {
       null, //progress function is null as we dont care about it for now
       (error) => console.log(error), //any error log it
       () => {
-        //COMPLETE FUNCTION
+        //COMPLETE FUNCTION after completion uploading pics
         storage
           .ref("post")
           .child(id)
