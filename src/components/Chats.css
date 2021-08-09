@@ -53,4 +53,19 @@
   box-shadow: 1px -7px 7px -6px rgba(0,0,0,0.44);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  overflow: scroll;
+}
+
+
+/* hide scroll bar for chrom */
+
+.chat_posts::-webkit-scrollbar{
+  display: none;
+}
+
+
+/* hide scrollbar for IE, Edge and FireFox */
+.chat_posts {
+  -ms-overflow-style: none;
+  width: none;
 }

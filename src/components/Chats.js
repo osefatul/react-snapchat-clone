@@ -15,7 +15,9 @@ function Chats() {
         </div>
         <ChatBubbleIcon className="chats_chatIcon" />
       </div>
-      <div className="chat_posts"></div>
+      <div className="chat_posts">
+        <h2>Hi</h2>
+      </div>
     </div>
   );
 }
