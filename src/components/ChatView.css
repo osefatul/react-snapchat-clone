@@ -7,7 +7,8 @@
 }
 
 .chatView_timer{
-  position: relative;
+  /* the position is absolute to the parent container, means top and right of the parent container position zero */
+  position: absolute ; 
   top: 0;
   right: 0;
   margin: 10px;

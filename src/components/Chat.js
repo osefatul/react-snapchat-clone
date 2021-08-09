@@ -31,7 +31,8 @@ function Chat({ id, username, timestamp, profilePic, imageUrl, read }) {
       <div className="chat_info">
         <h4>{username}</h4>
         <p>
-          Tap to view -{" "}
+          {/* if this one is read already then dont show the text. if not then show it in that case */}
+          {!read && "Tap to view -"}{" "}
           <ReactTimeago date={new Date(timestamp?.toDate()).toUTCString()} />{" "}
         </p>
       </div>
