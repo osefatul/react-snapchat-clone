@@ -12,30 +12,40 @@ import {
   useParams,
 } from "react-router-dom";
 import ChatView from "./components/ChatView";
+import { useDispatch, useSelector } from "react-redux";
+import { selectUser } from "./features/appSlice";
+import Login from "./components/Login";
 
 function App() {
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
+
   return (
     <div className="app">
       <header className="App-header">
         <Router>
-          <div className="app_body">
-            <Switch>
-              <Route path="/chats/view">
-                <ChatView />
-              </Route>
+          {!user ? (
+            <Login />
+          ) : (
+            <div className="app_body">
+              <Switch>
+                <Route path="/chats/view">
+                  <ChatView />
+                </Route>
 
-              <Route path="/chats">
-                <Chats />
-              </Route>
-              <Route path="/preview">
-                <Preview />
-              </Route>
+                <Route path="/chats">
+                  <Chats />
+                </Route>
+                <Route path="/preview">
+                  <Preview />
+                </Route>
 
-              <Route exact path="/">
-                <WebcamCapture />
-              </Route>
-            </Switch>
-          </div>
+                <Route exact path="/">
+                  <WebcamCapture />
+                </Route>
+              </Switch>
+            </div>
+          )}
         </Router>
       </header>
     </div>
