@@ -6,12 +6,15 @@ import "./Chats.css";
 import { useEffect } from "react";
 import { auth, db } from "../firebase";
 import Chat from "./Chat";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../features/appSlice";
+import { RadioButtonChecked, RadioButtonUnchecked } from "@material-ui/icons";
+import { useHistory } from "react-router-dom";
 
 function Chats() {
   const [posts, setPosts] = useState([]);
-
+  const dispatch = useDispatch();
+  const history = useHistory();
   //as the user is logged in we need to pull their info.
   const user = useSelector(selectUser);
 
@@ -28,6 +31,10 @@ function Chats() {
         )
       );
   }, []);
+
+  const takeSnap = () => {
+    history.push("/");
+  };
   return (
     <div className="chats">
       <div className="chats_header">
@@ -62,6 +69,12 @@ function Chats() {
           }
         )}
       </div>
+
+      <RadioButtonUnchecked
+        className="chats_takePicIcon"
+        onClick={takeSnap}
+        fontSize="large"
+      />
     </div>
   );
 }
