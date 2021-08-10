@@ -17,7 +17,7 @@ import { login, logout, selectUser } from "./features/appSlice";
 import Login from "./components/Login";
 import { auth } from "./firebase";
 import { PriorityHighOutlined } from "@material-ui/icons";
-
+import mobileFrame from "./mobileFrame.png";
 function App() {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
@@ -53,22 +53,24 @@ function App() {
                 alt=""
               />
               <div className="app_body">
-                <Switch>
-                  <Route path="/chats/view">
-                    <ChatView />
-                  </Route>
+                <div className="body_background">
+                  <Switch>
+                    <Route path="/chats/view">
+                      <ChatView />
+                    </Route>
 
-                  <Route path="/chats">
-                    <Chats />
-                  </Route>
-                  <Route path="/preview">
-                    <Preview />
-                  </Route>
+                    <Route path="/chats">
+                      <Chats />
+                    </Route>
+                    <Route path="/preview">
+                      <Preview />
+                    </Route>
 
-                  <Route exact path="/">
-                    <WebcamCapture />
-                  </Route>
-                </Switch>
+                    <Route exact path="/">
+                      <WebcamCapture />
+                    </Route>
+                  </Switch>
+                </div>
               </div>
             </>
           )}
