@@ -4,11 +4,16 @@ import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 import React, { useState } from "react";
 import "./Chats.css";
 import { useEffect } from "react";
-import { db } from "../firebase";
+import { auth, db } from "../firebase";
 import Chat from "./Chat";
+import { useSelector } from "react-redux";
+import { selectUser } from "../features/appSlice";
 
 function Chats() {
   const [posts, setPosts] = useState([]);
+
+  //as the user is logged in we need to pull their info.
+  const user = useSelector(selectUser);
 
   //lets get data form the database
   useEffect(() => {
@@ -26,7 +31,11 @@ function Chats() {
   return (
     <div className="chats">
       <div className="chats_header">
-        <Avatar className="chats_avatar" />
+        <Avatar
+          src={user.profilePic}
+          onClick={() => auth.signOut()}
+          className="chats_avatar"
+        />
         <div className="chats_search">
           <SearchIcon />
           <input type="text" placeholder="Friends" />
