@@ -46,24 +46,31 @@ function App() {
           {!user ? (
             <Login />
           ) : (
-            <div className="app_body">
-              <Switch>
-                <Route path="/chats/view">
-                  <ChatView />
-                </Route>
+            <>
+              <img
+                className="app_logo"
+                src="https://variety.com/wp-content/uploads/2015/01/snapchat-logo.jpg?w=1000"
+                alt=""
+              />
+              <div className="app_body">
+                <Switch>
+                  <Route path="/chats/view">
+                    <ChatView />
+                  </Route>
 
-                <Route path="/chats">
-                  <Chats />
-                </Route>
-                <Route path="/preview">
-                  <Preview />
-                </Route>
+                  <Route path="/chats">
+                    <Chats />
+                  </Route>
+                  <Route path="/preview">
+                    <Preview />
+                  </Route>
 
-                <Route exact path="/">
-                  <WebcamCapture />
-                </Route>
-              </Switch>
-            </div>
+                  <Route exact path="/">
+                    <WebcamCapture />
+                  </Route>
+                </Switch>
+              </div>
+            </>
           )}
         </Router>
       </header>
