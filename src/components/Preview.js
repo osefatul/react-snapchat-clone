@@ -18,12 +18,14 @@ import {
 import { v4 as uuid } from "uuid"; // for unique id for image
 import { storage, db } from "../firebase";
 import firebase from "firebase";
+import { selectUser } from "../features/appSlice";
 
 function Preview() {
   //pull the cameraImage from the redux store
   const cameraImage = useSelector(selectCameraImage);
   const history = useHistory();
   const dispatch = useDispatch();
+  const user = useSelector(selectUser);
 
   useEffect(() => {
     if (!cameraImage) {
@@ -60,7 +62,7 @@ function Preview() {
               imageUrl: url, //downloaded url
               username: "Sefat",
               read: false, //once the post is read this will get to true,
-              //profilePic,
+              profilePic: user.profilePic,
               timestamp: firebase.firestore.FieldValue.serverTimestamp(), // will give you a consistent firebase regardless wherever in the world you are.
             });
             history.replace("/chats");

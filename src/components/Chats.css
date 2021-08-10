@@ -45,6 +45,15 @@
 }
 
 
+.chats_searchIcon{
+  color: white;
+  font-size: 13px !important;
+}
+
+.chats_chatIcon{
+  color: white;
+  font-size: 18px !important;
+}
 
 .chat_posts{
   height: 359px;
